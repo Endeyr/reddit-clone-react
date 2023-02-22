@@ -29,13 +29,6 @@ const AuthModal: React.FC = () => {
 					<ModalHeader>Modal Title</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>Here is the Modal Body</ModalBody>
-
-					<ModalFooter>
-						<Button colorScheme="blue" mr={3} onClick={handleClose}>
-							Close
-						</Button>
-						<Button variant="ghost">Secondary Action</Button>
-					</ModalFooter>
 				</ModalContent>
 			</Modal>
 		</>
