@@ -4,7 +4,7 @@ import React from 'react'
 import { TiHome } from 'react-icons/ti'
 import Communities from './Communities'
 
-const UserMenu: React.FC = () => {
+const Directory: React.FC = () => {
 	return (
 		<Menu>
 			<MenuButton
@@ -37,4 +37,4 @@ const UserMenu: React.FC = () => {
 		</Menu>
 	)
 }
-export default UserMenu
+export default Directory
