@@ -1,6 +1,7 @@
 import { Community } from '@/atoms/communitiesAtom'
 import CommunityNotFound from '@/components/Community/CommunityNotFound'
 import Header from '@/components/Community/Header'
+import PageContent from '@/components/Layout/PageContent'
 import { firestore } from '@/firebase/clientApp'
 import { doc, getDoc } from 'firebase/firestore'
 import { GetServerSidePropsContext } from 'next'
@@ -19,6 +20,14 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ communityData }) => {
 	return (
 		<>
 			<Header communityData={communityData} />
+			<PageContent>
+				<>
+					<div>LHS</div>
+				</>
+				<>
+					<div>RHS</div>
+				</>
+			</PageContent>
 		</>
 	)
 }
