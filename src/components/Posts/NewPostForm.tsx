@@ -1,6 +1,10 @@
 import { Post } from '@/atoms/postAtom'
 import { firestore, storage } from '@/firebase/clientApp'
 import {
+	Alert,
+	AlertDescription,
+	AlertIcon,
+	AlertTitle,
 	Box,
 	Button,
 	Flex,
@@ -8,6 +12,7 @@ import {
 	Image,
 	Input,
 	Stack,
+	Text,
 	Textarea,
 } from '@chakra-ui/react'
 import { User } from 'firebase/auth'
@@ -72,6 +77,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ user }) => {
 	})
 	const [selectedFile, setSelectedFile] = useState<string>()
 	const [loading, setLoading] = useState(false)
+	const [error, setError] = useState(false)
 
 	const handleCreatePost = async () => {
 		const { communityId } = router.query
@@ -106,6 +112,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ user }) => {
 			}
 		} catch (error: any) {
 			console.log('handleCreatePost error', error.message)
+			setError(true)
 		}
 		setLoading(false)
 
@@ -169,6 +176,12 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ user }) => {
 					/>
 				)}
 			</Flex>
+			{error && (
+				<Alert status="error">
+					<AlertIcon />
+					<Text mr={2}>Error creating post</Text>
+				</Alert>
+			)}
 		</Flex>
 	)
 }
