@@ -17,13 +17,13 @@ export type Post = {
 
 interface PostState {
 	selectedPost: Post | null
-	post: Post[]
+	posts: Post[]
 	// postVotes
 }
 
 const defaultPostState: PostState = {
 	selectedPost: null,
-	post: [],
+	posts: [],
 }
 
 export const postState = atom<PostState>({
