@@ -1,4 +1,3 @@
-import { communityState } from '@/atoms/communitiesAtom'
 import { auth } from '@/firebase/clientApp'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import {
@@ -27,12 +26,10 @@ type UserMenuProps = {
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
-	const resetCommunityState = useResetRecoilState(communityState)
 	const setAuthModalState = useSetRecoilState(authModalState)
 
 	const logout = async () => {
 		await signOut(auth)
-		resetCommunityState()
 	}
 
 	return (

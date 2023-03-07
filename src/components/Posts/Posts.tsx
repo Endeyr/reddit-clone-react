@@ -52,6 +52,7 @@ const Posts: React.FC<PostsProps> = ({ communityData }) => {
 
 	useEffect(() => {
 		getPosts()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	return (
@@ -65,7 +66,10 @@ const Posts: React.FC<PostsProps> = ({ communityData }) => {
 							key={item.id}
 							post={item}
 							userIsCreator={user?.uid === item.creatorId}
-							userVoteValue={undefined}
+							userVoteValue={
+								postStateValue.postVotes.find((vote) => vote.postId === item.id)
+									?.voteValue
+							}
 							onVote={onVote}
 							onSelectPost={onSelectPost}
 							onDeletePost={onDeletePost}
