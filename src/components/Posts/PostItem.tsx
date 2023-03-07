@@ -11,7 +11,7 @@ import {
 import moment from 'moment'
 import Link from 'next/link'
 import { NextRouter } from 'next/router'
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { BsChat, BsDot } from 'react-icons/bs'
 import { FaReddit } from 'react-icons/fa'
@@ -41,6 +41,7 @@ const PostItem: React.FC<PostItemProps> = ({
 	onDeletePost,
 	onSelectPost,
 }) => {
+	const [loadingImage, setLoadingImage] = useState(true)
 	return (
 		<Flex
 			border="1px solid"
@@ -96,7 +97,16 @@ const PostItem: React.FC<PostItemProps> = ({
 					<Text fontSize="10pt">{post.body}</Text>
 					{post.imageURL && (
 						<Flex justify="center" align="center" p={2}>
-							<Image src={post.imageURL} maxHeight="460px" alt="Post Image" />
+							{loadingImage && (
+								<Skeleton height="200px" width="100%" borderRadius={4} />
+							)}
+							<Image
+								src={post.imageURL}
+								maxHeight="460px"
+								alt="Post Image"
+								onLoad={() => setLoadingImage(false)}
+								display={loadingImage ? 'none' : 'unset'}
+							/>
 						</Flex>
 					)}
 				</Stack>
