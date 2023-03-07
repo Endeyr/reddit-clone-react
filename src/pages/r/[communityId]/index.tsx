@@ -1,4 +1,5 @@
-import { Community } from '@/atoms/communitiesAtom'
+import { Community, communityState } from '@/atoms/communitiesAtom'
+import About from '@/components/Community/About'
 import CommunityNotFound from '@/components/Community/CommunityNotFound'
 import CreatePostLink from '@/components/Community/CreatePostLink'
 import Header from '@/components/Community/Header'
@@ -7,7 +8,8 @@ import Posts from '@/components/Posts/Posts'
 import { firestore } from '@/firebase/clientApp'
 import { doc, getDoc } from 'firebase/firestore'
 import { GetServerSidePropsContext } from 'next'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSetRecoilState } from 'recoil'
 import safeJsonStringify from 'safe-json-stringify'
 
 type CommunityPageProps = {
@@ -15,27 +17,38 @@ type CommunityPageProps = {
 }
 
 const CommunityPage: React.FC<CommunityPageProps> = ({ communityData }) => {
+	console.log('here is data', communityData)
+	const setCommunityStateValue = useSetRecoilState(communityState)
+
 	if (!communityData) {
 		return <CommunityNotFound />
 	}
 
+	useEffect(() => {
+		setCommunityStateValue((prev) => ({
+			...prev,
+			currentCommunity: communityData,
+		}))
+	}, [])
+
 	return (
 		<>
 			<Header communityData={communityData} />
+			{/* @ts-ignore */}
 			<PageContent>
 				<>
 					<CreatePostLink />
 					<Posts communityData={communityData} />
 				</>
 				<>
-					<div>RHS</div>
+					<About communityData={communityData} />
 				</>
 			</PageContent>
 		</>
 	)
 }
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-	//get community data
+	//get community data and pass it to client
 	try {
 		const communityDocRef = doc(
 			firestore,
