@@ -57,7 +57,7 @@ const About: React.FC<AboutProps> = ({ communityData }) => {
 		}
 		setUploadingImage(false)
 	}
-	console.log('community data: ', communityData)
+
 	console.log('creator id: ', communityData.creatorId)
 	return (
 		<Box position="sticky" top="14px">
