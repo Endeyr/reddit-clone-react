@@ -8,6 +8,8 @@ import {
 	Flex,
 	Icon,
 	Image,
+	Skeleton,
+	SkeletonCircle,
 	Spinner,
 	Stack,
 	Text,
