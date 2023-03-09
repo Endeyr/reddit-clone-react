@@ -67,7 +67,9 @@ const useCommunityData = () => {
 			const newSnippet: CommunitySnippet = {
 				communityId: communityData.id,
 				imageURL: communityData.imageURL || '',
+				isModerator: user?.uid === communityData.creatorId,
 			}
+			console.log('creator id error', communityData.creatorId)
 
 			batch.set(
 				doc(
