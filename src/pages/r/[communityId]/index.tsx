@@ -25,7 +25,7 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ communityData }) => {
 			currentCommunity: communityData,
 		}))
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
+	}, [communityData])
 
 	// Community was not found in the database
 	if (!communityData) {
