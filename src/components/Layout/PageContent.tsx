@@ -1,7 +1,9 @@
-import { Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
 
-type PageContentProps = {}
+type PageContentProps = {
+	children: any
+}
 
 const PageContent: React.FC<PageContentProps> = ({ children }) => {
 	return (
