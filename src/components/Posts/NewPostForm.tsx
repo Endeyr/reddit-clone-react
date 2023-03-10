@@ -1,38 +1,21 @@
 import { Post } from '@/atoms/postAtom'
 import { firestore, storage } from '@/firebase/clientApp'
 import useSelectFile from '@/hooks/useSelectFile'
-import {
-	Alert,
-	AlertDescription,
-	AlertIcon,
-	AlertTitle,
-	Box,
-	Button,
-	Flex,
-	Icon,
-	Image,
-	Input,
-	Stack,
-	Text,
-	Textarea,
-} from '@chakra-ui/react'
+import { Alert, AlertIcon, Flex, Icon, Text } from '@chakra-ui/react'
 import { User } from 'firebase/auth'
 import {
 	addDoc,
 	collection,
-	doc,
 	serverTimestamp,
 	Timestamp,
 	updateDoc,
 } from 'firebase/firestore'
 import { getDownloadURL, ref, uploadString } from 'firebase/storage'
 import { useRouter } from 'next/router'
-import { default as React, useEffect, useRef, useState } from 'react'
-import { AiFillCloseCircle } from 'react-icons/ai'
+import { default as React, useState } from 'react'
 import { BiPoll } from 'react-icons/bi'
 import { BsLink45Deg, BsMic } from 'react-icons/bs'
 import { IoDocumentText, IoImageOutline } from 'react-icons/io5'
-import { useRecoilState, useSetRecoilState } from 'recoil'
 import ImageUpload from './PostForm/ImageUpload'
 import TextInputs from './PostForm/TextInputs'
 import TabItem from './TabItem'
