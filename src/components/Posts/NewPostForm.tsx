@@ -37,12 +37,7 @@ import ImageUpload from './PostForm/ImageUpload'
 import TextInputs from './PostForm/TextInputs'
 import TabItem from './TabItem'
 
-type NewPostFormProps = {
-	user: User
-	communityImageURL?: string
-}
-
-const formTabs: TabItem[] = [
+const formTabs: TabList[] = [
 	{
 		title: 'Post',
 		icon: IoDocumentText,
@@ -65,9 +60,14 @@ const formTabs: TabItem[] = [
 	},
 ]
 
-export type TabItem = {
+export type TabList = {
 	title: string
 	icon: typeof Icon.arguments
+}
+
+type NewPostFormProps = {
+	user: User
+	communityImageURL?: string
 }
 
 const NewPostForm: React.FC<NewPostFormProps> = ({
